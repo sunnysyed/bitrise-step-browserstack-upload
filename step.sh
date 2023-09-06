@@ -3,9 +3,9 @@ set -e
 set -x
 set -o pipefail
 if [[ "$bs_os" == "android" ]]; then
-   set filename = "$BITRISE_APP_TITLE-${BITRISE_BUILD_NUMBER}.apk"
+   export filename="$BITRISE_APP_TITLE-${BITRISE_BUILD_NUMBER}.apk"
 else
-   set filename = "$BITRISE_APP_TITLE-${BITRISE_BUILD_NUMBER}.ipa"
+    export filename="$BITRISE_APP_TITLE-${BITRISE_BUILD_NUMBER}.ipa"
 fi
 cp $upload_path $filename
 curl -u "$bs_username:$bs_access_key" -X POST https://api-cloud.browserstack.com/app-live/upload -F "file=@$filename" -F 'data={"custom_id": "'$custom_id'"}' | jq -j '.app_url' | cut -c6- |  envman add --key BS_APP_HASH_ID

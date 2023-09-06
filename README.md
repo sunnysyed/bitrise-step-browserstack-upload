@@ -1,6 +1,6 @@
-# browserstack-upload
+# browserstack-applive-upload
 
-For remote device testing on Browserstack. This step allows you to upload an APK file to BrowserStack and use the returned `app_url` for testing on real devices
+For live device testing on Browserstack. This step allows you to upload an APK file to BrowserStack and use the returned `app_url` for testing on real devices
 
 
 ## How to use this Step

@@ -1,14 +1,14 @@
-title: browserstack-upload
+title: browserstack-applive-upload
 summary: |
-  Upload APK/IPA files to BrowserStack's App Automate
+  Upload APK/IPA files to BrowserStack's App Live
 description: |
-  Upload your build files to Browserstack for remote device testing. Upload your IPA/APK file to BrowserStack App Automation and get back the app's url for your remote device tests.
-website: https://github.com/marcelkalveram/bitrise-step-browserstack-upload
-source_code_url: https://github.com/marcelkalveram/bitrise-step-browserstack-upload
-support_url: https://github.com/marcelkalveram/bitrise-step-browserstack-upload/issues
-published_at: 2018-10-05T19:01:57.318895784+02:00
+  Upload your build files to Browserstack for live device testing. Upload your IPA/APK file to BrowserStack App Live and get back the app's url for your live device tests.
+website: https://github.com/sunnysyed/bitrise-step-browserstack-upload/
+source_code_url: https://github.com/sunnysyed/bitrise-step-browserstack-upload/
+support_url: https://github.com/sunnysyed/bitrise-step-browserstack-upload/issues
+published_at: 2023-09-06T19:01:57.318895784+02:00
 source:
-  git: https://github.com/marcelkalveram/bitrise-step-browserstack-upload.git
+  git: https://github.com/sunnysyed/bitrise-step-browserstack-upload.git
   commit: 932e393f9b0455f676839c7185c1d8740133beec
 host_os_tags:
   - osx-10.10
@@ -47,7 +47,7 @@ inputs:
         or $BITRISE\_IPA\_PATH
       title: A Bitrise generated APK or IPA path
     upload_path: $BITRISE_APK_PATH
-  - browserstack_username: $BROWSERSTACK_USERNAME
+  - bs_username: $BS_USERNAME
     opts:
       description: |
         The username you use to log into your Browserstack account
@@ -55,7 +55,7 @@ inputs:
       is_sensitive: true
       summary: Your Browserstack username
       title: Browserstack username
-  - browserstack_access_key: $BROWSERSTACK_ACCESS_KEY
+  - bs_access_key: $BS_ACCESS_KEY
     opts:
       description: |
         The access key you use to log into your Browserstack account
@@ -63,15 +63,42 @@ inputs:
       is_sensitive: true
       summary: Your Browserstack access key
       title: Browserstack access key
+  - bs_os: "android"
+    opts:
+      title: Browserstack os
+      value_options:
+        - "android"
+        - "ios"
+  - bs_device: $BS_DEVICE
+    opts: Samsung+Galaxy+S22
+      description: |
+        For example, Google+Pixel+5
+      is_required: true
+      summary: For example, Google+Pixel+5
+      title: Name of the device you want to test on
+  - bs_os_version: $BS_OS_VERSION
+    opts: 12
+      description: |
+        Numerical value. For example, 12.0, 15.4.
+      is_required: true
+      summary: Numerical value. For example, 12.0, 15.4.
+      title: The OS version you want to test on
   - custom_id:
     opts:
       summary: Custom id to distinguish uploads in case there are multiple apps
       title: Custom Id
 outputs:
-  - BROWSERSTACK_APP_URL: null
+  - BS_APP_URL: null
     opts:
       description: |
-        The app url returned by Browserstack App Automate with the following format "bs://..."". 
-        Use this in your remote device tests, usually through your capabilities configuration
-      summary: The app URL used in your App Automate's remote device tests
-      title: Browserstack App Automate App URL
+        The app url returned by Browserstack App Live"". 
+        Use this link to launch a live testing session on the specified device
+      summary: The app URL used in your App Live device tests
+      title: Browserstack App Live App URL
+  - BS_APP_HASH_ID: null
+    opts:
+      description: |
+        The app hash id returned by Browserstack App Live"". 
+        Use this link to launch a live testing session on the specified device
+      summary: The uploaded app_hash_id
+      title: Browserstack App Hash Id

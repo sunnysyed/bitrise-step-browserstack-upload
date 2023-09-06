@@ -69,16 +69,14 @@ inputs:
       value_options:
         - "android"
         - "ios"
-  - bs_device: $BS_DEVICE
+  - bs_device: Samsung+Galaxy+S22
     opts:
-      default: Samsung+Galaxy+S22
       description: For example, Google+Pixel+5
       is_required: true
       summary: For example, Google+Pixel+5
       title: Name of the device you want to test on
-  - bs_os_version: $BS_OS_VERSION
+  - bs_os_version: 12
     opts:
-      default: 12
       description: Numerical value. For example, 12.0, 15.4.
       is_required: true
       summary: Numerical value. For example, 12.0, 15.4.

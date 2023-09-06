@@ -31,7 +31,10 @@ workflows:
           inputs:
             - upload_path: $UPLOAD_PATH
             - bs_username: $BS_USERNAME
-            - bs_access_key: $BRS_ACCESS_KEY
+            - bs_access_key: $BS_ACCESS_KEY
+            - bs_os: android
+            - bs_os_version: 12
+            - bs_device: Samsung+Galaxy+S22
       - script:
           inputs:
             - content: |
